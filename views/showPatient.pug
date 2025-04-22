@@ -1,0 +1,12 @@
+body
+    h1 Show patient 
+    a(href="/") 
+        button Back to home page
+    a(href="/pdf?id=", download="file.pdf")
+        button(class="pdf", id="pdf", data-id=!{id}) Get pdf of patient data
+    p   id: #{id}
+    p   name: #{name}
+    p   consultation: #{consultation}
+    script.
+        var id = !{id};console.log("id ="+!{id});
+    script(src="rss/js/showScript.js") 

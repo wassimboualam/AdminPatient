@@ -1,0 +1,28 @@
+head 
+    link(rel="stylesheet", href="rss/css/style1.css")
+body 
+    h1 Patients
+    a(href="/add") 
+        button add another patient
+    table
+        thead
+            th Name
+            th Date Consultation
+            th Actions
+        tbody 
+            each patient in JSON.parse(pData)
+                tr 
+                    td #{patient.name}
+                    td #{patient.consultation}
+                    td 
+                        a(href=`/update?id=${patient.id}&name=${patient.name}&consultation=${patient.consultation}`) 
+                            button update
+                        a(href=`/delete?id=${patient.id}&name=${patient.name}`) 
+                            button delete
+                        a(href="/show?id="+ patient.id) 
+                            button show
+
+            
+    script.
+        var data = JSON.stringify(!{pData}); var msg = decodeURIComponent(!{msg});
+    script(src="rss/js/homeScript.js") 

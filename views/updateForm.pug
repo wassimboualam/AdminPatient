@@ -1,0 +1,18 @@
+body
+    h1 Update patient 
+    a(href="/") 
+        button Back to home page
+    form(action="/update", method="post")
+        input(type="hidden", name="id")
+        input(type="hidden", name="_method", value='put')
+        label Name:
+        input(type="text", name="name", value="", required)
+        label Consultation:
+        input(type="date", name="consultation", required)
+        input(type="submit", value="Submit patient")
+
+    script.
+        console.log("id = "+!{id});
+        console.log("name = "+!{name});
+        console.log("consultation = "+!{consultation});
+    script(src="rss/js/updateScript.js") 

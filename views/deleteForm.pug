@@ -1,0 +1,15 @@
+body
+    h1 Delete patient 
+    a(href="/") 
+        button Back to home page
+    form(action="/delete", method="post")
+        input(type="hidden", name="id")
+        input(type="hidden", name="_method", value='delete')
+        input(type="hidden", name="name", value=!{name})
+        p Are you sure you want to delete !{name}?
+        input(type="submit", value="Delete patient")
+
+    script.
+        console.log("id = "+!{id});
+        console.log("name = "+!{name});
+    script(src="rss/js/updateScript.js") 
