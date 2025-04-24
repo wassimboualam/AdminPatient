@@ -1,5 +1,4 @@
-
-
+// formats query data since it turns often into literal code 
 function formatQuery(req,res,next) {
     if (!req.query || Object.entries(req.query).length == 0) {
         next();
