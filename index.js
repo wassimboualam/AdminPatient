@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const PatientsHandler = require("./src/PatientHandler");
 const router  = require("./routers/actionsRouter");
+const patientModel = require("./src/patientModel");
 const app = express();
 const patientsHandler = new PatientsHandler();
 
@@ -17,7 +18,7 @@ app.get("/", (req, res) => {
     patients = JSON.stringify(patients);
     // See if there is a message
     const msg = req.query.msg;
-    return res.render("homePage", {pData:patients, msg: JSON.stringify(msg)});    
+    return res.render("homePage", {pData:patients, msg: JSON.stringify(msg), model:Object.keys(patientModel)});    
 });
 
 // This is for ressources like stylesheets and js file to be sent without hassle

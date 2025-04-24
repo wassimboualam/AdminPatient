@@ -6,7 +6,8 @@ body
         button add another patient
     table
         thead
-            th Name
+            each key in (model)
+                th #{key}
             th Date Consultation
             th Actions
         tbody 
@@ -24,5 +25,5 @@ body
 
             
     script.
-        var data = JSON.stringify(!{pData}); var msg = decodeURIComponent(!{msg});
+        var data = JSON.stringify(!{pData}); var msg = decodeURIComponent(!{msg}); 
     script(src="rss/js/homeScript.js") 

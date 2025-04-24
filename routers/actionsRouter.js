@@ -97,7 +97,7 @@ router.get("/show", (req,res) => {
     const {id, name, consultation} = patientsHandler.getPatient(req.query.id);
     console.log("Went to showPatient page for patient: "+name)
     return res.render("showPatient", {id, name, consultation});
-})
+});
 
 
 router.get("/pdf", async (req,res) => {
@@ -118,7 +118,8 @@ router.get("/pdf", async (req,res) => {
         }
     });
     return res.send({data:"done"});
-})
+});
+
 
 
 

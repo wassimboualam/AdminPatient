@@ -1,4 +1,5 @@
 const fs = require("fs");
+const patientModel = require("./patientModel");
 // const applyCopyObject = require("./tests/src/copyObject");
 // applyCopyObject()  
 // function applyCopyObject() {
@@ -12,6 +13,23 @@ function copyObject (obj) {
 }
 
 function updateObject(params) {
+    
+}
+function verifyPatientData(patientData, model = patientModel) {
+    
+    console.log("verifyPatientData has started")
+    console.log(model)
+    Object.entries(model).forEach((v) => {
+        console.log("loop has started")
+
+        const key = v[0];
+        const datatype = v[1];
+        if (patientData[key] === undefined) {
+            throw new Error(key+" not present");
+        } else{
+            console.log(`key name ${key} exists`)
+        }
+    })
     
 }
 
@@ -29,8 +47,7 @@ class PatientsHandler {
 
     addPatient(patientData) {
         // Verifies necessary data before addition
-        if (!patientData.name) throw new Error("name not present");
-        if (!patientData.consultation) throw new Error("consultation not present");
+        verifyPatientData(patientData);
 
         // add new patient
         let newPatient = {"id":this.getLatestIndex(), ...patientData, "deleted": false};
