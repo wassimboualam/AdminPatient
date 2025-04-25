@@ -2,8 +2,9 @@ h1 Add patient
     a(href="/") 
         button Back to home page
 form(action="/add", method="post")
-    label Nom:
-    input(type="text", name="nom" required)
-    label Consultation:
-    input(type="date", name="consultation" required)
+    each key in modelKeys 
+        br
+        label #{key} 
+        input(type="text" name=!{key} required)
+    br
     input(type="submit", value="Submit patient")

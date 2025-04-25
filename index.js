@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
     patients = JSON.stringify(patients);
     // See if there is a message
     const msg = req.query.msg;
-    return res.render("homePage", {pData:patients, msg: JSON.stringify(msg), model:Object.keys(patientModel)});    
+    return res.render("homePage", {pData:patients, msg: JSON.stringify(msg), modelKeys:Object.keys(patientModel)});    
 });
 
 // This is for ressources like stylesheets and js file to be sent without hassle

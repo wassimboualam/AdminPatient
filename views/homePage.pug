@@ -6,15 +6,14 @@ body
         button add another patient
     table
         thead
-            each key in (model)
+            each key in (modelKeys)
                 th #{key}
-            th Date Consultation
             th Actions
         tbody 
             each patient in JSON.parse(pData)
                 tr 
-                    td #{patient.name}
-                    td #{patient.consultation}
+                    each key in (modelKeys)
+                        td #{patient[key]}
                     td 
                         a(href=`/update?id=${patient.id}&name=${patient.name}&consultation=${patient.consultation}`) 
                             button update

@@ -4,6 +4,7 @@ const methodConverter = require("./middleware/methodConverter");
 const formatQuery = require("./middleware/formatQuery");
 const PdfMaker = require("../src/pdfMaker");
 const path = require("path");
+const addModelToOptions = require("./middleware/addModelToOptions");
 
 const patientsHandler = new PatientsHandler();
 const router = express.Router();
@@ -16,10 +17,12 @@ router.use(methodConverter)
 // middleware to format variables as strings in pug 
 router.use(formatQuery);
 
+router.use(addModelToOptions);
+
 // directs to form for adding a new patient
 router.get("/add", (req,res) => {
     console.log("Went to addForm");
-    return res.render("addForm");
+    return res.render("addForm", req.getOptions);
 })
 
 // receives new patient data
@@ -46,8 +49,8 @@ router.post("/add", (req,res) => {
 router.get("/update", (req,res) => {
     console.log("Went to updateForm");
     const {id, name, consultation}  = req.newQuery;
-
-    return res.render("updateForm", {id, name, consultation});
+    req.getOptions = {...req.getOptions, ...{id, name, consultation}}
+    return res.render("updateForm", req.getOptions);
 })
 
 // receives new patient data

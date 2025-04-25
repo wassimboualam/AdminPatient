@@ -1,8 +1,9 @@
 const patientModel = {
-    "nom":String,
+    "name":String,
     "consultation":String,
-    "adresse":String,
-    "age":String,
+    "telephone":String,
+    "cin":String,
+    "diagnostique":String,
     "couverture social":String
 }
 
